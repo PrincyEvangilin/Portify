@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portify — Portfolio Creator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+
+      <div>
+        <h1>Portify</h1>
+        <span>Portfolio Creator</span>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button id="themeBtn" class="icon-btn" type="button" title="Toggle theme">
+        ◐
+      </button>
+
+      <button id="printBtn" class="print-btn" type="button">
+        Print / PDF
+      </button>
+    </div>
+  </header>
+
+
+  <!-- MAIN APP -->
+  <main class="app-layout">
+
+    <!-- EDITOR -->
+    <aside class="editor">
+
+      <div class="editor-heading">
+        <span>BUILD YOUR PORTFOLIO</span>
+        <h2>Editor</h2>
+        <p>Fill in your details and see the changes instantly.</p>
+      </div>
+
+
+      <!-- PROFILE -->
+      <section class="editor-section">
+        <div class="section-label">
+          <span>01</span>
+          <h3>Profile</h3>
+        </div>
+
+        <label>
+          Full Name
+          <input id="nameInput" type="text" placeholder="Your Name">
+        </label>
+
+        <label>
+          Professional Role
+          <input id="roleInput" type="text" placeholder="Computer Science Student">
+        </label>
+
+        <label>
+          About
+          <textarea id="aboutInput" rows="5"
+            placeholder="Write a short professional introduction..."></textarea>
+        </label>
+
+        <label>
+          Profile Photo
+          <input id="photoInput" type="file" accept="image/*">
+        </label>
+
+        <button id="removePhotoBtn" class="secondary-btn" type="button">
+          Remove Photo
+        </button>
+      </section>
+
+
+      <!-- CONTACT -->
+      <section class="editor-section">
+        <div class="section-label">
+          <span>02</span>
+          <h3>Contact</h3>
+        </div>
+
+        <label>
+          Email
+          <input id="emailInput" type="email" placeholder="you@example.com">
+        </label>
+
+        <label>
+          Phone
+          <input id="phoneInput" type="text" placeholder="+91 XXXXX XXXXX">
+        </label>
+
+        <label>
+          Location
+          <input id="locationInput" type="text" placeholder="Chennai, India">
+        </label>
+
+        <label>
+          GitHub
+          <input id="githubInput" type="text" placeholder="github.com/username">
+        </label>
+
+        <label>
+          LinkedIn
+          <input id="linkedinInput" type="text" placeholder="linkedin.com/in/username">
+        </label>
+      </section>
+
+
+      <!-- SKILLS -->
+      <section class="editor-section">
+        <div class="section-label">
+          <span>03</span>
+          <h3>Skills</h3>
+        </div>
+
+        <div class="inline-input">
+          <input id="skillInput" type="text" placeholder="e.g. SQL">
+          <button id="addSkillBtn" class="add-btn" type="button">+</button>
+        </div>
+
+        <div id="skillsList" class="editor-list"></div>
+      </section>
+
+
+      <!-- PROJECTS -->
+      <section class="editor-section">
+        <div class="section-label">
+          <span>04</span>
+          <h3>Projects</h3>
+        </div>
+
+        <label>
+          Project Title
+          <input id="projectTitleInput" type="text" placeholder="Project name">
+        </label>
+
+        <label>
+          Description
+          <textarea id="projectDescInput" rows="3"
+            placeholder="What did you build?"></textarea>
+        </label>
+
+        <button id="addProjectBtn" class="wide-add-btn" type="button">
+          + Add Project
+        </button>
+
+        <div id="projectsList" class="editor-list"></div>
+      </section>
+
+
+      <!-- CERTIFICATES -->
+      <section class="editor-section">
+        <div class="section-label">
+          <span>05</span>
+          <h3>Certificates</h3>
+        </div>
+
+        <label>
+          Certificate
+          <input id="certificateInput" type="text" placeholder="Certificate name">
+        </label>
+
+        <label>
+          Organisation
+          <input id="certificateOrgInput" type="text" placeholder="Organisation / Platform">
+        </label>
+
+        <button id="addCertificateBtn" class="wide-add-btn" type="button">
+          + Add Certificate
+        </button>
+
+        <div id="certificatesList" class="editor-list"></div>
+      </section>
+
+
+      <!-- EDUCATION -->
+      <section class="editor-section">
+        <div class="section-label">
+          <span>06</span>
+          <h3>Education</h3>
+        </div>
+
+        <label>
+          Degree
+          <input id="degreeInput" type="text" placeholder="B.Sc. Computer Science">
+        </label>
+
+        <label>
+          College / University
+          <input id="collegeInput" type="text" placeholder="College Name">
+        </label>
+
+        <label>
+          Year
+          <input id="yearInput" type="text" placeholder="2028">
+        </label>
+      </section>
+
+
+      <!-- ACHIEVEMENTS -->
+      <section class="editor-section">
+        <div class="section-label">
+          <span>07</span>
+          <h3>Achievements</h3>
+        </div>
+
+        <div class="inline-input">
+          <input id="achievementInput" type="text" placeholder="Achievement">
+          <button id="addAchievementBtn" class="add-btn" type="button">+</button>
+        </div>
+
+        <div id="achievementsList" class="editor-list"></div>
+      </section>
+
+
+      <!-- DESIGN -->
+      <section class="editor-section">
+        <div class="section-label">
+          <span>08</span>
+          <h3>Design</h3>
+        </div>
+
+        <label>
+          Template
+          <select id="templateSelect">
+            <option value="classic">Elegant</option>
+            <option value="modern">Modern</option>
+            <option value="minimal">Minimal</option>
+          </select>
+        </label>
+      </section>
+
+
+      <!-- QUALITY -->
+      <section class="quality-box">
+        <div class="quality-top">
+          <div>
+            <span>PORTFOLIO QUALITY</span>
+            <h3 id="qualityScore">0%</h3>
+          </div>
+
+          <div class="quality-icon">✦</div>
+        </div>
+
+        <div class="progress-track">
+          <div id="qualityProgress" class="progress-bar"></div>
+        </div>
+
+        <p id="qualityMessage">
+          Start adding your details.
+        </p>
+      </section>
+
+
+      <button id="resetBtn" class="reset-btn" type="button">
+        Reset Portfolio
+      </button>
+
+    </aside>
+
+
+    <!-- PREVIEW -->
+    <section class="preview-area">
+
+      <div class="preview-heading">
+        <div>
+          <span>LIVE PREVIEW</span>
+          <h2>Your Portfolio</h2>
+        </div>
+
+        <small>Changes update automatically</small>
+      </div>
+
+
+      <div id="portfolio" class="portfolio classic">
+
+        <!-- HERO -->
+        <section class="portfolio-hero">
+
+          <div class="hero-content">
+
+            <span class="hero-kicker">PORTFOLIO</span>
+
+            <h1 id="previewName">
+              Your Name
+            </h1>
+
+            <p id="previewRole" class="hero-role">
+              Computer Science Student
+            </p>
+
+            <p id="previewAbout" class="hero-about">
+              Your professional introduction will appear here.
+            </p>
+
+            <div class="social-links">
+
+              <a id="previewGithub"
+                 href=""
+                 target="_blank"
+                 rel="noopener noreferrer">
+                GitHub
+              </a>
+
+              <a id="previewLinkedin"
+                 href=""
+                 target="_blank"
+                 rel="noopener noreferrer">
+                LinkedIn
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <div class="hero-photo-wrap">
+
+            <div class="hero-photo-frame">
+
+              <img
+                id="previewPhoto"
+                src=""
+                alt="Profile Photo"
+              >
+
+              <div id="photoPlaceholder" class="photo-placeholder">
+                PN
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+        <div class="contact-strip">
+
+          <span id="previewEmail">
+            email@example.com
+          </span>
+
+          <span id="previewPhone">
+            +91 XXXXX XXXXX
+          </span>
+
+          <span id="previewLocation">
+            Chennai, India
+          </span>
+
+        </div>
+
+
+        <!-- ABOUT -->
+        <section id="aboutSection" class="portfolio-section">
+
+          <div class="section-heading">
+            <span>01</span>
+            <h2>About</h2>
+          </div>
+
+          <p id="aboutContent" class="section-text"></p>
+
+        </section>
+
+
+        <!-- SKILLS -->
+        <section id="skillsSection" class="portfolio-section">
+
+          <div class="section-heading">
+            <span>02</span>
+            <h2>Skills</h2>
+          </div>
+
+          <div id="previewSkills" class="skills-grid"></div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+        <section id="projectsSection" class="portfolio-section">
+
+          <div class="section-heading">
+            <span>03</span>
+            <h2>Projects</h2>
+          </div>
+
+          <div id="previewProjects" class="projects-grid"></div>
+
+        </section>
+
+
+        <!-- EDUCATION -->
+        <section id="educationSection" class="portfolio-section">
+
+          <div class="section-heading">
+            <span>04</span>
+            <h2>Education</h2>
+          </div>
+
+          <div class="education-row">
+
+            <div>
+              <h3 id="previewDegree">
+                B.Sc. Computer Science
+              </h3>
+
+              <p id="previewCollege">
+                College Name
+              </p>
+            </div>
+
+            <span id="previewYear">
+              2028
+            </span>
+
+          </div>
+
+        </section>
+
+
+        <!-- CERTIFICATES -->
+        <section id="certificatesSection" class="portfolio-section">
+
+          <div class="section-heading">
+            <span>05</span>
+            <h2>Certificates</h2>
+          </div>
+
+          <div id="previewCertificates" class="two-column-grid"></div>
+
+        </section>
+
+
+        <!-- ACHIEVEMENTS -->
+        <section id="achievementsSection" class="portfolio-section">
+
+          <div class="section-heading">
+            <span>06</span>
+            <h2>Achievements</h2>
+          </div>
+
+          <div id="previewAchievements" class="achievement-list"></div>
+
+        </section>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
